@@ -104,6 +104,20 @@ const RectButton: React.FC<Props> = ({type, variant, link, children, classes, fu
             }
         break
 
+        case 'light':
+            switch(variant) {
+                case 'fill':
+                    tp = 'bg-slate-50 hover:bg-slate-100 text-slate-900'
+                    break
+                case 'outline':
+                    tp = 'bg-transparent border-solid border-[1px] border-slate-50 hover:border-slate-100 text-slate-50 hover:text-slate-100'
+                    break
+                default:
+                    tp = 'text-slate-50 hover:text-slate-100'
+                    break
+            }
+        break
+
         default:
             switch(variant) {
                 case 'fill':

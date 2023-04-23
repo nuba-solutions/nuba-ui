@@ -7,7 +7,7 @@ export default function Home() {
 		<main className="flex min-h-screen w-full flex-col items-center justify-center text-center
 						bg-space-galaxy bg-center bg-cover bg-no-repeat bg-blend-darken">
 			<div className='flex mx-auto order-2 py-5 lg:py-0 lg:absolute lg:right-10 lg:top-10'>
-				<RectButton variant='outline' classes='rounded-md shadow-center-xl shadow-slate-600 shadow-blur shadow-center' type='' link='/login'>
+				<RectButton variant='outline' classes='rounded-md shadow-center-xl shadow-slate-600 shadow-center' type='light' link='/login'>
 					Get Started
 					<IoRocket/>
 				</RectButton>
