@@ -39,18 +39,6 @@ module.exports = {
           '800': '#002032',
           '900': '#001a29'
         },
-        tertiary: {
-          '50': '#f5f5ff',
-          '100': '#ebecff',
-          '200': '#cdcffe',
-          '300': '#afb2fe',
-          '400': '#7479fd',
-          '500': '#383ffc',
-          '600': '#3239e3',
-          '700': '#2a2fbd',
-          '800': '#222697',
-          '900': '#1b1f7b'
-        },
         destructive: {
           '50': '#fff2f2',
           '100': '#ffe6e6',
@@ -91,6 +79,10 @@ module.exports = {
       boxShadow: {
         '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
         'center-xl': '0 5px 50px 1px rgba(0, 0, 0, 0.1)',
+      },
+      screens: {
+        '3xl': '1920px',
+        '4xl': '2160px'
       }
     },
   },
