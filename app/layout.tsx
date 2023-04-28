@@ -1,3 +1,4 @@
+import { AuthContextProvider } from '@/contexts/AuthContext'
 import './globals.css'
 import { Poppins } from 'next/font/google'
 
@@ -10,14 +11,15 @@ export const metadata = {
   description: 'A project to help developers hit the ground running!',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <body className={poppins.className}>{children}</body>
-    </html>
-  )
+export default function RootLayout({children}: {children: React.ReactNode}) {
+
+	return (
+		<html lang="en">
+			<body className={poppins.className}>
+				<AuthContextProvider>
+					{children}
+				</AuthContextProvider>
+			</body>
+		</html>
+  	)
 }

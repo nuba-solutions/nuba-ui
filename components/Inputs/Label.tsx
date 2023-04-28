@@ -10,7 +10,7 @@ const Label: React.FC<LabelProps> = ({name, text}) => {
     return (
         <label
             htmlFor={name}
-            className={`text-slate-900 dark:text-slate-200 text-sm`}
+            className={`text-slate-900 dark:text-slate-300 text-sm`}
         >
             {text}
         </label>

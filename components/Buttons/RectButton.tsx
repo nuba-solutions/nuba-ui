@@ -6,7 +6,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: string;
     children?: React.ReactNode;
     link?: string;
-    click?: (e: any) => void;
+    onCLick?: (e: any) => void;
     classes?: string
     full?: boolean;
     center?: boolean,
@@ -16,12 +16,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean
 }
 
-const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, classes, full, center, right, left, sz, disabled, click }) => {
+const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, classes, full, center, right, left, sz, disabled, onCLick }) => {
     let tp: string
 
-    switch(visual) {
+    switch(variant) {
         case 'primary':
-            switch(variant) {
+            switch(visual) {
                 case 'fill':
                     tp = 'bg-primary-500 hover:bg-primary-600 hover:shadow-lg hover:shadow-primary-900/50 dark:hover:shadow-slate-950 text-white focus:outline-primary-500/50'
                     break
@@ -35,7 +35,7 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
         break
 
         case 'secondary':
-            switch(variant) {
+            switch(visual) {
                 case 'fill':
                     tp = 'bg-secondary-500 hover:bg-secondary-600 hover:shadow-lg hover:shadow-secondary-900/50 dark:hover:shadow-slate-950 text-white focus:outline-secondary-500/50'
                     break
@@ -49,7 +49,7 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
         break
 
         case 'destructive':
-            switch(variant) {
+            switch(visual) {
                 case 'fill':
                     tp = 'bg-destructive-500 hover:bg-destructive-600 hover:shadow-lg hover:shadow-destructive-900/30 dark:hover:shadow-slate-950 text-white focus:outline-destructive-500/50'
                     break
@@ -63,7 +63,7 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
         break
 
         case 'warning':
-            switch(variant) {
+            switch(visual) {
                 case 'fill':
                     tp = 'bg-warning-500 hover:bg-warning-400 hover:shadow-lg hover:shadow-warning-700/30 dark:hover:shadow-slate-950 text-black focus:outline-warning-500/50'
                     break
@@ -77,7 +77,7 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
         break
 
         case 'success':
-            switch(variant) {
+            switch(visual) {
                 case 'fill':
                     tp = 'bg-success-500 hover:bg-success-600 hover:shadow-lg hover:shadow-success-900/30 dark:hover:shadow-slate-950 text-white focus:outline-success-500/50'
                     break
@@ -91,7 +91,7 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
         break
 
         case 'info':
-            switch(variant) {
+            switch(visual) {
                 case 'fill':
                     tp = 'bg-blue-500 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-900/30 dark:hover:shadow-slate-950 text-white focus:outline-blue-500/50'
                     break
@@ -105,7 +105,7 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
         break
 
         case 'light':
-            switch(variant) {
+            switch(visual) {
                 case 'fill':
                     tp = 'bg-slate-50 hover:bg-slate-100 hover:shadow-lg hover:shadow-slate-900/30 dark:hover:shadow-slate-950 text-slate-900 focus:outline-slate-100/50'
                     break
@@ -119,7 +119,7 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
         break
 
         default:
-            switch(variant) {
+            switch(visual) {
                 case 'fill':
                     tp = 'bg-gray-800 hover:bg-gray-900 hover:shadow-lg hover:shadow-slate-900/30 dark:hover:shadow-slate-950 text-gray-100 focus:outline-gray-800/50 dark:bg-gray-200 dark:hover:bg-gray-300 dark:text-gray-800 focus:outline-gray-200/50'
                     break
@@ -138,19 +138,18 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
             sz = 'h-8 px-3 text-sm'
             break
         case 'md':
-            sz = 'h-10 px-8'
+            sz = 'h-12 px-8'
             break
         case 'lg':
-            sz = 'h-12 px-8'
+            sz = 'h-14 px-8'
             break
         case 'xl':
             sz = 'h-16 px-8 text-xl'
             break
         default:
-            sz = 'h-10 px-5'
+            sz = 'h-12 px-5'
             break
     }
-
 
     if (link) {
         return (
@@ -164,7 +163,7 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
     } else {
         return (
             <button
-                onClick={click}
+                onClick={onCLick}
                 disabled={disabled}
                 className={`flex items-center gap-2 justify-center focus-visible:outline focus-visible:outline-4 ${classes} ${sz} ${tp} ${full ? 'w-full' : 'w-fit'} ${center ? 'mx-auto' : ''} ${right ? 'ml-auto' : ''} ${left ? 'mr-auto' : ''} ${disabled ? 'opacity-50 pointer-events-none select-none' : ''}`}
             >
