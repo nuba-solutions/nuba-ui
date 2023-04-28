@@ -60,6 +60,7 @@ const LoginOne: React.FC<LoginOneProps> = ({left, center}) => {
                     router.push('/dashboard')
                 })
         } catch (err) {
+            setIsLoading(false)
             console.log(err)
         }
     }
