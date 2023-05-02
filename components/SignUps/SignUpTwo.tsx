@@ -175,7 +175,7 @@ const SignUpTwo: React.FC = () => {
             />
 
             <div className='bg-slate-100 dark:bg-gray-900 overflow-clip md:border md:border-slate-300 md:dark:border-gray-700 md:shadow-3xl absolute flex flex-col lg:flex-row justify-center mx-auto p-2 md:rounded-3xl md:p-2 md:w-[520px] lg:w-[820px] lg:h-[600px] lg:px-none lg:p-2'>
-                <div className='grid max-h-[160px] md:max-h-[180px] lg:max-h-full w-full lg:w-4/12 rounded-2xl overflow-clip place-items-center'>
+                <div className='relative grid max-h-[160px] md:max-h-[180px] lg:max-h-full w-full lg:w-4/12 rounded-2xl overflow-clip place-items-center'>
                     <Image
                         src="/images/blue-pattern.jpg"
                         alt="Login Background Image"
