@@ -4,10 +4,10 @@ import { IoRocket } from 'react-icons/io5'
 
 export default function Home() {
 	return (
-		<main className="flex min-h-screen w-full flex-col items-center justify-center text-center
-						bg-space-galaxy bg-center bg-cover bg-no-repeat bg-slate-600 bg-blend-multiply">
-			<div className='flex mx-auto order-2 py-5 lg:py-0 lg:absolute lg:right-10 lg:top-10'>
-				<RectButton visual='outline' classes='rounded-md hover:shadow-center-xl hover:shadow-slate-600 hover:bg-slate-300 hover:text-slate-950' variant='light' link='/login'>
+		<main className="relative flex flex-col min-h-screen w-full items-center justify-center text-center bg-slate-950">
+			<Image src="/images/space-bg.jpg" alt="Nuba UI Space Background" width={1920} height={1080} className='absolute h-full max-h-full opacity-70 object-cover' priority/>
+			<div className='flex mx-auto order-2 py-5 lg:py-0 lg:absolute lg:right-10 lg:top-10 z-10'>
+				<RectButton visual='outline' classes='rounded-md hover:shadow-center-xl hover:shadow-slate-600 hover:bg-slate-300 hover:text-slate-950' variant='light' link='/signup'>
 					Get Started
 					<IoRocket/>
 				</RectButton>

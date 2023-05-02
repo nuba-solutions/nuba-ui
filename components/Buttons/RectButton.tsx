@@ -23,7 +23,7 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
         case 'primary':
             switch(visual) {
                 case 'fill':
-                    tp = 'bg-primary-500 hover:bg-primary-600 hover:shadow-lg hover:shadow-primary-900/50 dark:hover:shadow-slate-950 text-white focus:outline-primary-500/50'
+                    tp = 'bg-primary-500 hover:bg-primary-600 hover:shadow-lg hover:shadow-primary-900/20 dark:hover:shadow-slate-950 text-white focus:outline-primary-500/50'
                     break
                 case 'outline':
                     tp = 'bg-transparent border-solid border-[1px] border-primary-500 hover:border-primary-600 hover:shadow-lg hover:shadow-primary-900/20 dark:hover:shadow-slate-950 text-primary-500 focus:outline-primary-500/50'
@@ -37,7 +37,7 @@ const RectButton: React.FC<ButtonProps> = ({visual, variant, link, children, cla
         case 'secondary':
             switch(visual) {
                 case 'fill':
-                    tp = 'bg-secondary-500 hover:bg-secondary-600 hover:shadow-lg hover:shadow-secondary-900/50 dark:hover:shadow-slate-950 text-white focus:outline-secondary-500/50'
+                    tp = 'bg-secondary-500 hover:bg-secondary-600 hover:shadow-lg hover:shadow-secondary-900/20 dark:hover:shadow-slate-950 text-white focus:outline-secondary-500/50'
                     break
                 case 'outline':
                     tp = 'bg-transparent border-solid border-[1px] border-secondary-500 hover:border-secondary-600 hover:shadow-lg hover:shadow-secondary-900/20 dark:hover:shadow-slate-950 text-secondary-500 focus:outline-secondary-500/50'

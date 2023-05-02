@@ -1,9 +1,9 @@
-import SignUpOne from '@/components/SignUps/SignUpOne'
+import SignUpTwo from '@/components/SignUps/SignUpTwo'
 import React from 'react'
 
 const CreateAccount = () => {
     return (
-        <SignUpOne/>
+        <SignUpTwo/>
     )
 }
 

@@ -179,7 +179,7 @@ const SignUpOne: React.FC<SignUpOneProps> = ({left}) => {
                 />
                 <div className='absolute text-center'>
                     <h2 className='text-5xl font-semibold text-slate-100 pb-1 md:text-6xl lg:text-7xl 2xl:text-8xl'>Nuba UI</h2>
-                    <p className='text-slate-300'>Login Style One</p>
+                    <p className='text-slate-300'>Sign Up Style One</p>
                 </div>
             </div>
             <div className={`${left ? 'order-1' : 'order-2'} relative flex flex-col justify-center flex-1 mx-auto p-5 md:p-0 md:justify-center md:px-10 md:w-6/12 lg:w-4/12 2xl:w-3/12 3xl:px-20 4xl:px-32`}>

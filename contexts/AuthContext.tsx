@@ -36,7 +36,7 @@ export const AuthContextProvider = ({children} : {children: React.ReactNode}) =>
         return createUserWithEmailAndPassword(auth, email, password).then(res => updateProfile(res.user, { displayName: name }))
     }
 
-    const login = (email: string, password: string) => {
+    const login = async (email: string, password: string) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 

@@ -56,6 +56,7 @@ const LoginOne: React.FC<LoginOneProps> = ({left, center}) => {
         try {
             await login(loginData.email, loginData.password)
                 .then((res: any) => {
+                    console.log(res)
                     setIsLoading(false)
                     router.push('/dashboard')
                 })
@@ -107,7 +108,7 @@ const LoginOne: React.FC<LoginOneProps> = ({left, center}) => {
 
     if (center) {
         return (
-            <main className='flex justify-center items-center w-full w-12/12 min-h-[100vh] p-2 bg-slate-100 dark:bg-gray-950 md:flex-row md:p-0'>
+            <main className='flex justify-center items-center w-full w-12/12 min-h-[100vh] p-2 bg-slate-100 dark:bg-gray-900 md:flex-row md:p-0'>
                 <Image
                     src="/images/blue-pattern.jpg"
                     width={800}
@@ -117,7 +118,7 @@ const LoginOne: React.FC<LoginOneProps> = ({left, center}) => {
                     priority
                 />
 
-                <div className='bg-slate-100 dark:bg-gray-900 overflow-clip border border-slate-300 dark:border-gray-700 shadow-3xl absolute flex flex-col justify-center mx-auto p-5 md:rounded-2xl md:px-10 md:w-6/12 lg:w-5/12 xl:3/12 2xl:w-3/12 3xl:px-10 4xl:px-20'>
+                <div className='bg-slate-100 dark:bg-gray-900 overflow-clip md:border md:border-slate-300 md:dark:border-gray-700 md:shadow-3xl absolute flex flex-col justify-center mx-auto p-5 md:rounded-2xl md:px-10 md:w-6/12 lg:w-5/12 xl:3/12 2xl:w-3/12 3xl:px-10 4xl:px-20'>
                     <Image src={'/logos/nuba-ui-logo.svg'} width={150} height={80} className='dark:hidden mx-auto h-auto md:py-2' alt='Nuba UI Logo' priority/>
                     <Image src={'/logos/nuba-ui-logo-mixed.svg'} width={150} height={80} className='hidden mx-auto dark:block md:py-2' alt='Nuba UI Logo' priority/>
 
@@ -255,13 +256,6 @@ const LoginOne: React.FC<LoginOneProps> = ({left, center}) => {
                             <IoPersonAdd/>
                         </RectButton>
                     </div>
-
-                    <hr className='h-px my-2 bg-slate-300 border-0 dark:bg-gray-800'/>
-
-                    <RectButton link="/" center>
-                        <IoArrowBack/>
-                        Go back
-                    </RectButton>
                 </form>
 
                 {isLoading ? <LoaderOne/> : null}

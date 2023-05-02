@@ -1,8 +1,8 @@
-import LoginOne from "@/components/Logins/LoginOne"
+import LoginTwo from "@/components/Logins/LoginTwo"
 
 const Login = () => {
     return (
-        <LoginOne />
+        <LoginTwo />
     )
 }
 
