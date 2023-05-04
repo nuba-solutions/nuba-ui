@@ -11,7 +11,11 @@ import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import LoaderOne from '../Loaders/LoaderOne'
 
-const LoginTwo: React.FC = () => {
+interface LoginTwoProps {
+    inverted?: boolean
+}
+
+const LoginTwo: React.FC<LoginTwoProps> = ({inverted}) => {
     const {user, login} = useAuth()
     const router = useRouter()
 
@@ -114,7 +118,7 @@ const LoginTwo: React.FC = () => {
             />
 
             <div className='bg-slate-100 dark:bg-gray-900 overflow-clip md:border md:border-slate-300 md:dark:border-gray-700 md:shadow-3xl absolute flex flex-col lg:flex-row justify-center mx-auto p-2 md:rounded-3xl md:p-2 md:w-[520px] lg:w-[820px] lg:h-[600px] lg:px-none lg:p-2'>
-                <div className='relative grid max-h-[160px] md:max-h-[180px] lg:max-h-full w-full lg:w-4/12 rounded-2xl overflow-clip place-items-center'>
+                <div className={`${inverted ? 'order-2' : 'order-1'} relative grid max-h-[160px] md:max-h-[180px] lg:max-h-full w-full lg:w-4/12 rounded-2xl overflow-clip place-items-center`}>
                     <Image
                         src="/images/blue-pattern.jpg"
                         alt="Login Background Image"
@@ -127,7 +131,7 @@ const LoginTwo: React.FC = () => {
                     </div>
                 </div>
 
-                <div className='p-2 lg:w-8/12 lg:p-5 lg:px-10 flex flex-col'>
+                <div className={`${inverted ? 'order-1' : 'order-2'} p-2 lg:w-8/12 lg:p-5 lg:px-10 flex flex-col`}>
                     <div className='order-1 md:order-2 lg:order-1'>
                         <div className='hidden items-center flex-row justify-between md:flex'>
                             <p className='text-slate-500'>Don't have an account?</p>

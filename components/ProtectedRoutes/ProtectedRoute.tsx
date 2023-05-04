@@ -3,37 +3,25 @@
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation';
 import React, {useEffect} from 'react'
-import RectButton from '../Buttons/RectButton';
-import { IoLogOut } from 'react-icons/io5';
+import NavbarOne from '../Navbars/NavbarOne';
+import SidebarOne from '../Sidebars/SidebarOne';
 
 const ProtectedRoute = ({children} : {children : React.ReactNode}) => {
 
-    const {user, logout} = useAuth();
+    const { user } = useAuth();
     const router = useRouter();
 
     useEffect(() => {
         !user ? router.push('/login') : ''
     },[router, user])
 
-    const handleLogout = async () => {
-        await logout()
-    }
-
     return (
-        <div className='flex flex-col justify-between w-full m-0 p-0'>
-            {user ? (
-                <>
-                    <div className='flex items-center justify-between bg-slate-300 p-2 shadow-xl text-slate-700'>
-                        <span>
-                            Welcome <strong>{user?.displayName}</strong>
-                        </span>
-                        <RectButton variant='secondary' onCLick={handleLogout}>Sign out <IoLogOut/></RectButton>
-                    </div>
-                    <div className='p-5'>
-                        {children}
-                    </div>
-                </>
-            ) : null}
+        <div className='bg-slate-100 dark:bg-gray-900 text-slate-600 dark:text-slate-200 min-h-full'>
+            <NavbarOne/>
+            {/* <SidebarOne/> */}
+            <div className='p-3'>
+                {children}
+            </div>
         </div>
     )
 }
