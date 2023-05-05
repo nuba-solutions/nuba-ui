@@ -7,9 +7,10 @@ interface ProfileImageProps {
     name: string,
     size?: string,
     shadow?: boolean
+    classes?: string
 }
 
-const ProfileImage: React.FC<ProfileImageProps> = ({image, source, name, size, shadow}) => {
+const ProfileImage: React.FC<ProfileImageProps> = ({image, source, name, size, shadow, classes}) => {
     let sizeClass: string = ''
 
     switch(size) {
@@ -46,9 +47,9 @@ const ProfileImage: React.FC<ProfileImageProps> = ({image, source, name, size, s
         <div className={`${sizeClass} overflow-clip rounded-full flex justify-center items-center outline outline-2 outline-slate-50 dark:outline-slate-700 ${shadow ? 'shadow-md' : ''}`}>
             {
                 image? (
-                    <Image src={source ? source : ''} alt={name} width={20} height={20} className='w-full h-full object-cover object-bottom' quality={100}/>
+                    <Image src={source ? source : ''} alt={name} width={20} height={20} className={`w-full h-full object-cover object-bottom ${classes}`} quality={100}/>
                 ) : (
-                    <div className='bg-primary-500 dark:bg-primary-300 h-full w-full flex justify-center items-center font-semibold leading-4 text-slate-100 dark:text-secondary-500'>
+                    <div className={`bg-primary-500 dark:bg-primary-300 h-full w-full flex justify-center items-center font-semibold leading-4 text-slate-100 dark:text-secondary-500 ${classes}`}>
                         {handleGetInitials()}
                     </div>
                 )

@@ -44,7 +44,7 @@ const NavbarOne = () => {
                             onClick={toggleUserDropdown}
                         >
                             <span className="sr-only">Open user menu</span>
-                            <ProfileImage name={user?.displayName}/>
+                            <ProfileImage name={user?.displayName} classes=''/>
                         </button>
                         <div className={`${isUserDropdownOpen? 'block' : 'hidden'} absolute right-2 z-50 my-6 list-none overflow-clip bg-white divide-y divide-gray-200 rounded-lg shadow-xl dark:shadow-2xl dark:bg-gray-700 dark:divide-gray-600`}>
                             <div className="px-4 py-4" role="none">
@@ -70,7 +70,7 @@ const NavbarOne = () => {
                                 </li>
                             </ul>
                             <div className='px-4 py-2 pt-4'>
-                                <SwitcherOne label='Dark Mode' onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')} checked={theme === 'dark' ? true : false}/>
+                                <SwitcherOne label='Dark Mode' onChange={() => setTheme(!theme || theme === '' ? 'dark' : '')} checked={theme === 'dark' ? true : false}/>
                             </div>
                         </div>
                     </div>

@@ -24,7 +24,7 @@ const SwitcherOne: React.FC<SwitcherOneProps> = ({onChange, checked, label, sz})
 
     return (
         <label className="relative inline-flex items-center cursor-pointer" onChange={onChange}>
-            <input type="checkbox" checked={checked} className="sr-only peer"/>
+            <input type="checkbox" defaultChecked={checked} className="sr-only peer"/>
             <div className={`${sizeClass} bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:bg-white after:border-gray-300 after:border after:rounded-full after:transition-all dark:border-gray-800 peer-checked:bg-primary-500`}></div>
             <span className="ml-3 md:text-base">{label}</span>
         </label>

@@ -9,26 +9,27 @@ export const useTheme = () => useContext(ThemeContext)
 
 export const ThemeContextProvider = ({children} : {children: React.ReactNode}) => {
     const isDarkTheme = useThemeDetector();
-    const [theme, setTheme] = useState<any>(isDarkTheme ? 'dark' : 'light')
+    const [systemTheme, setSystemTheme] = useState<any>(isDarkTheme ? 'dark' : '')
+    const [theme, setTheme] = useState<any>(localStorage.getItem('theme'))
 
     const handleThemeStorage = () => {
-        localStorage.removeItem('theme')
-        localStorage.setItem('theme', theme)
+        if (!('theme' in localStorage)) {
+            localStorage.setItem('theme', systemTheme)
+        } else {
+            localStorage.setItem('theme', theme)
+        }
         setTheme(localStorage.getItem('theme'))
+
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
     }
 
     useEffect(() => {
         handleThemeStorage()
     }, [theme])
-
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-    } else {
-        document.documentElement.classList.remove('dark')
-    }
-    localStorage.theme = 'light'
-    localStorage.theme = 'dark'
-    localStorage.removeItem('theme')
 
     return (
         <ThemeContext.Provider value={{theme, setTheme}}>
