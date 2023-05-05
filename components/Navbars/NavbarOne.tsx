@@ -5,8 +5,10 @@ import { HiOutlineMenuAlt1 } from 'react-icons/hi'
 import Link from 'next/link'
 import { useAuth } from '@/contexts/AuthContext'
 import SwitcherOne from '../Switchers/SwitcherOne'
-import { IoAccessibility, IoAirplane, IoMail, IoNotifications } from 'react-icons/io5'
+import { IoAccessibility, IoAirplane, IoAlarm, IoMail, IoNotifications } from 'react-icons/io5'
 import { useTheme } from '@/contexts/ThemeContext'
+import CircleButton from '../Buttons/CircleButton'
+import NavButton from '../Buttons/NavButton'
 
 const NavbarOne = () => {
     const { theme, setTheme } = useTheme();
@@ -28,23 +30,30 @@ const NavbarOne = () => {
                     <span className="sr-only">Open sidebar</span>
                     <HiOutlineMenuAlt1 className='text-2xl'/>
                 </button>
-                <Link href="/dashboard">
+                <Link href="/dashboard" className='focus:outline-none'>
                     <Image src="/logos/nuba-ui-logo-mixed.svg" alt="Nuba Logo" width={90} height={50} className='mx-4 hidden dark:block'/>
                     <Image src="/logos/nuba-ui-logo.svg" alt="Nuba Logo" width={90} height={50} className='mx-4 dark:hidden'/>
                 </Link>
             </div>
             <div className="flex items-center">
-                <div className='flex items-center mr-4 gap-x-6 text-lg text-slate-400'>
-                    <IoMail/>
-                    <IoNotifications/>
+                <div className='flex items-center mr-4 gap-x-2'>
+                    <NavButton link='/users' notification>
+                        <IoMail/>
+                    </NavButton>
+                    <NavButton notification>
+                        <IoNotifications/>
+                    </NavButton>
+                    <NavButton notification>
+                        <IoAlarm/>
+                    </NavButton>
                 </div>
                 <div className="flex items-center ml-3">
                     <div>
-                        <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                        <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-600 hover:ring-4 hover:ring-gray-200 dark:hover:ring-gray-600"
                             onClick={toggleUserDropdown}
                         >
                             <span className="sr-only">Open user menu</span>
-                            <ProfileImage name={user?.displayName} classes=''/>
+                            <ProfileImage name={user?.displayName}/>
                         </button>
                         <div className={`${isUserDropdownOpen? 'block' : 'hidden'} absolute right-2 z-50 my-6 list-none overflow-clip bg-white divide-y divide-gray-200 rounded-lg shadow-xl dark:shadow-2xl dark:bg-gray-700 dark:divide-gray-600`}>
                             <div className="px-4 py-4" role="none">
