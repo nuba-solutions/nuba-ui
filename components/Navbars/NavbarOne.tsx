@@ -5,10 +5,11 @@ import { HiOutlineMenuAlt1 } from 'react-icons/hi'
 import Link from 'next/link'
 import { useAuth } from '@/contexts/AuthContext'
 import SwitcherOne from '../Switchers/SwitcherOne'
-import { IoAccessibility, IoAirplane, IoAlarm, IoMail, IoNotifications } from 'react-icons/io5'
+import { IoAccessibility, IoAirplane, IoAlarm, IoLogOut, IoMail, IoNotifications, IoPerson, IoSettings } from 'react-icons/io5'
 import { useTheme } from '@/contexts/ThemeContext'
 import CircleButton from '../Buttons/CircleButton'
 import NavButton from '../Buttons/NavButton'
+import ProfileListItem from '../ListItems/ProfileListItem'
 
 const NavbarOne = () => {
     const { theme, setTheme } = useTheme();
@@ -36,15 +37,15 @@ const NavbarOne = () => {
                 </Link>
             </div>
             <div className="flex items-center">
-                <div className='flex items-center mr-4 gap-x-2'>
-                    <NavButton link='/users' notification>
+                <div className='hidden md:flex items-center mr-4 gap-x-2'>
+                    <NavButton link='/users'>
                         <IoMail/>
                     </NavButton>
                     <NavButton notification>
                         <IoNotifications/>
                     </NavButton>
-                    <NavButton notification>
-                        <IoAlarm/>
+                    <NavButton>
+                        <IoSettings/>
                     </NavButton>
                 </div>
                 <div className="flex items-center ml-3">
@@ -65,18 +66,26 @@ const NavbarOne = () => {
                                 </p>
                             </div>
                             <ul className="py-2" role="none">
-                                <li>
-                                    <Link href="/dashboard" className="block px-4 py-2  md:text-base hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</Link>
-                                </li>
-                                <li>
-                                    <Link href="/users" className="block px-4 py-2  md:text-base hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Users</Link>
-                                </li>
-                                <li>
-                                    <Link href="/dashboard" className="block px-4 py-2  md:text-base hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</Link>
-                                </li>
-                                <li>
-                                    <span onClick={handleLogout} className="cursor-pointer block px-4 py-2  md:text-base text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</span>
-                                </li>
+                                <ProfileListItem link='/'>
+                                    <IoPerson className='mr-3 text-slate-400 dark:text-slate-300'/>
+                                    Account
+                                </ProfileListItem>
+                                <ProfileListItem>
+                                    <IoMail className='mr-3 text-slate-400 dark:text-slate-300'/>
+                                    Messages
+                                </ProfileListItem>
+                                <ProfileListItem notification>
+                                    <IoNotifications className='mr-3 text-slate-400 dark:text-slate-300'/>
+                                    Notifications
+                                </ProfileListItem>
+                                <ProfileListItem>
+                                    <IoSettings className='mr-3 text-slate-400 dark:text-slate-300'/>
+                                    Settings
+                                </ProfileListItem>
+                                <ProfileListItem onClick={handleLogout}>
+                                    <IoLogOut className='mr-3 text-slate-400 dark:text-slate-300'/>
+                                    Sign out
+                                </ProfileListItem>
                             </ul>
                             <div className='px-4 py-2 pt-4'>
                                 <SwitcherOne label='Dark Mode' onChange={() => setTheme(!theme || theme === '' ? 'dark' : '')} checked={theme === 'dark' ? true : false}/>
