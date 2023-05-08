@@ -9,10 +9,10 @@ interface ProfileListItemProps {
     notification?: boolean
 }
 
-const ProfileListItem: React.FC<ProfileListItemProps> = ({children, onClick,  link, notification}) => {
+const ProfileListItem: React.FC<ProfileListItemProps> = ({children, onClick, link, notification}) => {
     return  link ? (
         <li>
-            <Link href="" className='select-none relative flex flex-row items-center justify-between px-4 py-2 md:text-base hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' role="menuitem">
+            <Link href={link} onClick={onClick} className='select-none relative flex flex-row items-center justify-between px-4 py-2 md:text-base hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' role="menuitem">
                 <span className='flex items-center'>
                     {children}
                 </span>

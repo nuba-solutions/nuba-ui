@@ -44,7 +44,7 @@ const ProfileImage: React.FC<ProfileImageProps> = ({image, source, name, size, s
     }
 
     return (
-        <div className={`${sizeClass} overflow-clip rounded-full flex justify-center items-center outline outline-2 outline-slate-50 dark:outline-slate-700 text-white ${shadow ? 'shadow-md' : ''}`}>
+        <div className={`${sizeClass} overflow-clip rounded-full flex justify-center items-center focus:outline-none ring-4 ring-slate-50 dark:ring-slate-700 text-white ${shadow ? 'shadow-md' : ''}`}>
             {
                 image? (
                     <Image src={source ? source : ''} alt={name} width={20} height={20} className={`w-full h-full object-cover object-bottom ${classes}`} quality={100}/>

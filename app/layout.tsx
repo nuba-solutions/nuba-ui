@@ -17,7 +17,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<ThemeContextProvider>
 			<html lang="en">
-				<body className={poppins.className}>
+				<body className={`${poppins.className} bg-slate-100 dark:bg-gray-900 text-slate-600 dark:text-slate-200 min-h-full`}>
 					<AuthContextProvider>
 						{children}
 					</AuthContextProvider>
