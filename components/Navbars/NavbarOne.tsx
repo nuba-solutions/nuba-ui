@@ -9,8 +9,9 @@ import { IoLogOut, IoMail, IoNotifications, IoPerson, IoSettings } from 'react-i
 import { useTheme } from '@/contexts/ThemeContext'
 import NavButton from '../Buttons/NavButton'
 import ProfileListItem from '../ListItems/ProfileListItem'
+import { TbArrowBarToLeft, TbArrowBarToRight } from 'react-icons/tb'
 
-const NavbarOne = ({setIsSidebarOpen} : any) => {
+const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : any) => {
     const { theme, setTheme } = useTheme();
     const { user, logout } = useAuth()
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
@@ -21,15 +22,29 @@ const NavbarOne = ({setIsSidebarOpen} : any) => {
 
     return (
         <nav className="sticky top-0 z-50 w-full h-[70px] flex items-center justify-between pl-2 pr-4 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-            <div className="flex items-center justify-start w-[250px]">
-                <button onClick={() => setIsSidebarOpen((prev: boolean) => !prev)} type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                    <span className="sr-only">Open sidebar</span>
-                    <HiOutlineMenuAlt1 className='text-2xl'/>
-                </button>
-                <Link href="/dashboard" className='focus:outline-none'>
-                    <Image src="/logos/nuba-ui-logo-mixed.svg" alt="Nuba Logo" width={90} height={50} className='mx-4 hidden dark:block'/>
-                    <Image src="/logos/nuba-ui-logo.svg" alt="Nuba Logo" width={90} height={50} className='mx-4 dark:hidden'/>
-                </Link>
+            <div className="flex items-center justify-between w-[250px]">
+                <div className='flex items-center'>
+                    <button onClick={() => setIsSidebarOpen((prev: boolean) => !prev)} type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                        <span className="sr-only">Open sidebar</span>
+                        <HiOutlineMenuAlt1 className='text-2xl'/>
+                    </button>
+                    <Link href="/dashboard" className='focus:outline-none'>
+                        <Image src="/logos/nuba-ui-logo-mixed.svg" alt="Nuba Logo" width={90} height={50} className='mx-4 hidden dark:block'/>
+                        <Image src="/logos/nuba-ui-logo.svg" alt="Nuba Logo" width={90} height={50} className='mx-4 dark:hidden'/>
+                    </Link>
+                </div>
+                {isSidebarCompact ? (
+                        <TbArrowBarToRight
+                            onClick={() => setIsSidebarCompact((prev: boolean) => !prev)}
+                            className='hidden lg:block cursor-pointer h-6 w-6 rounded-sm mr-5 text-gray-400'
+                        />
+                    ) : (
+                        <TbArrowBarToLeft
+                            onClick={() => setIsSidebarCompact((prev: boolean) => !prev)}
+                            className='hidden lg:block cursor-pointer h-6 w-6 rounded-sm mr-5 text-gray-400'
+                        />
+                    )
+                }
             </div>
             <div className="flex items-center lg:flex-1 justify-between">
                 <div className='hidden lg:flex flex-col'>
