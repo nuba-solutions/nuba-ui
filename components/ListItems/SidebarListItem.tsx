@@ -36,7 +36,7 @@ const SidebarListItem: React.FC<SidebarListItemProps> = ({children, name, onClic
                             pageHeader ? setPageHeader({title: pageHeader.title, sub: pageHeader.sub}) : ''
                         }}
                         href={link}
-                        className={`select-none cursor-pointer flex items-center ${compact? 'justify-center' : 'justify-between'} h-[45px] px-2 rounded-lg text-slate-300 ${isDropdownOpen ? 'rounded-b-none bg-gray-100 dark:bg-gray-700' : 'bg-none'} hover:bg-gray-100 dark:hover:bg-gray-700 ${path == `/${link}` ? "active" : "dark:text-slate-500"} ${classes ?  classes : ''}`}
+                        className={`select-none cursor-pointer flex items-center ${compact? 'justify-center' : 'justify-between'} h-[45px] px-2 rounded-lg text-slate-400 ${isDropdownOpen ? 'rounded-b-none bg-gray-100 dark:bg-gray-700' : 'bg-none'} hover:bg-gray-100 dark:hover:bg-gray-700 ${path == `/${link}` ? "active" : "dark:text-slate-500"} ${classes ?  classes : ''}`}
                     >
                         <div className="flex items-center">
                             {
@@ -80,7 +80,7 @@ const SidebarListItem: React.FC<SidebarListItemProps> = ({children, name, onClic
                             onMouseEnter={() => setIsDropdownOpen(true)}
                             onMouseLeave={() => setIsDropdownOpen(false)}
                             title={name}
-                            className={`select-none cursor-pointer flex ${compact? 'justify-center' : 'justify-between'} items-center h-[45px] px-2 rounded-lg text-slate-300 dark:text-slate-500 ${isDropdownOpen && dropdown ? 'rounded-b-none bg-gray-100 dark:bg-gray-700': 'bg-none'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
+                            className={`select-none cursor-pointer flex ${compact? 'justify-center' : 'justify-between'} items-center h-[45px] px-2 rounded-lg text-slate-400 dark:text-slate-500 ${isDropdownOpen && dropdown ? 'rounded-b-none bg-gray-100 dark:bg-gray-700': 'bg-none'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
                             <div className="flex items-center">
                                 {
                                     iconLeft ? (

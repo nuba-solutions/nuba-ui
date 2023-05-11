@@ -5,7 +5,7 @@ import { HiOutlineMenuAlt1 } from 'react-icons/hi'
 import Link from 'next/link'
 import { useAuth } from '@/contexts/AuthContext'
 import SwitcherOne from '../Switchers/SwitcherOne'
-import { IoLogOut, IoMail, IoNotifications, IoPerson, IoSettings } from 'react-icons/io5'
+import { IoMail, IoNotifications, IoSettings } from 'react-icons/io5'
 import { useTheme } from '@/contexts/ThemeContext'
 import NavButton from '../Buttons/NavButton'
 import ProfileListItem from '../ListItems/ProfileListItem'
@@ -13,7 +13,7 @@ import { TbArrowBarToLeft, TbArrowBarToRight } from 'react-icons/tb'
 import { usePageHeader } from '@/contexts/PageHeaderContext'
 
 const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : any) => {
-    const { pageHeader } = usePageHeader();
+    const { pageHeader, setPageHeader } = usePageHeader();
     const { theme, setTheme } = useTheme();
     const { user, logout } = useAuth()
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
@@ -30,7 +30,9 @@ const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : a
                         <span className="sr-only">Open sidebar</span>
                         <HiOutlineMenuAlt1 className='text-2xl'/>
                     </button>
-                    <Link href="/dashboard" className='focus:outline-none'>
+                    <Link href="/dashboard" className='focus:outline-none'
+                        onClick={() => setPageHeader({title: 'Dashboard', sub: 'Welcome to Nuba UI'})}
+                    >
                         <Image
                             src="/logos/nuba-ui-logo-mixed.svg"
                             alt="Nuba Logo"
@@ -39,6 +41,7 @@ const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : a
                             className='mx-4 hidden dark:block'
                             placeholder="blur"
                             blurDataURL={'/logos/nuba-ui-logo-mixed.svg'}
+                            priority
                         />
                         <Image
                             src="/logos/nuba-ui-logo.svg"
@@ -47,7 +50,8 @@ const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : a
                             height={50}
                             className='mx-4 dark:hidden'
                             placeholder="blur"
-                            blurDataURL={'/logos/nuba-ui-logo-mixed.svg'}
+                            blurDataURL={'/logos/nuba-ui-logo.svg'}
+                            priority
                         />
                     </Link>
                 </div>

@@ -23,7 +23,7 @@ const SidebarOne = ({isSidebarOpen, isSidebarCompact, setIsSidebarOpen} : any) =
                     </SidebarListItem>
 
                     <SidebarListItem name='Settings' iconLeft={<IoConstruct/>} compact={isSidebarCompact}/>
-                    <SidebarListItem name='Users' iconLeft={<HiUsers/>} compact={isSidebarCompact} link='users' onClick={() => setIsSidebarOpen(false)}/>
+                    <SidebarListItem name='Users' iconLeft={<HiUsers/>} compact={isSidebarCompact} link='users' onClick={() => setIsSidebarOpen(false)} pageHeader={{title: "Users", sub: "System Users Details"}}/>
                 </ul>
 
                 <hr className="h-px my-4 bg-white border-0 dark:bg-gray-700"></hr>
