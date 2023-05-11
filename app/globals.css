@@ -41,3 +41,7 @@ body {
 	border-radius: 10px;
 	border: 2px solid rgb(var(--scroll-border));
 }
+
+.active {
+	@apply bg-gray-100 dark:bg-slate-700 text-primary-500 dark:text-primary-500;
+}

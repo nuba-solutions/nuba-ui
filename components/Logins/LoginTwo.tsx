@@ -55,8 +55,6 @@ const LoginTwo: React.FC<LoginTwoProps> = ({inverted}) => {
         try {
             await login(loginData.email, loginData.password)
                 .then((res: any) => {
-                    console.log(res)
-                    setIsLoading(false)
                     router.push('/dashboard')
                 })
         } catch (err) {

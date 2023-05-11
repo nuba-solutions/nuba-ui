@@ -11,21 +11,20 @@ interface TooltipProps {
 
 const Tooltip: React.FC<TooltipProps> = ({children, content}) => {
 
-    const [isTooltipVisible, setIsTooltipVisible] = useState(true)
+    const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
     return (
-        <div className='relative overflow-visible'>
-            <div role="tooltip"
-                className={`absolute z-10 -top-11 flex items-center justify-center mx-auto whitespace-nowrap ${isTooltipVisible ? 'opacity-1' : 'invisible opacity-0'} px-3 py-2 text-sm text-slate-100 bg-gray-900 rounded-lg shadow-3xl tooltip dark:bg-gray-900 transition-opacity delay-200 ease-in-out`}>
-                {content}
-                <div className="overflow-hidden inline-block absolute -bottom-[12px]">
-                    <div className=" h-3 w-4 dark:bg-gray-900 -rotate-45 transform origin-top-left"></div>
+        <span onMouseEnter={() => setIsTooltipVisible(true)} onMouseLeave={() => setIsTooltipVisible(false)}>
+            <div className='relative'>
+                <div className={`absolute z-50 -top-11 flex items-center justify-center mx-auto whitespace-nowrap ${isTooltipVisible ? 'opacity-1' : 'invisible opacity-0'} px-3 py-2 font-semibold text-sm text-slate-900 bg-primary-500 rounded-lg shadow-2xl dark:bg-primary-500 transition-opacity delay-200 ease-in-out`}>
+                    {content}
+                    <div className="overflow-hidden inline-block absolute -bottom-[12px]">
+                        <div className=" h-3 w-4 dark:bg-primary-500 -rotate-45 transform origin-top-left shadow-2xl"></div>
+                    </div>
                 </div>
             </div>
-            <div onMouseEnter={() => setIsTooltipVisible(true)} onMouseLeave={() => setIsTooltipVisible(false)}>
-                {children}
-            </div>
-        </div>
+            {children}
+        </span>
     )
 }
 

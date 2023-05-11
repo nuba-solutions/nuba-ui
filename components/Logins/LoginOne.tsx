@@ -57,7 +57,6 @@ const LoginOne: React.FC<LoginOneProps> = ({left, center}) => {
             await login(loginData.email, loginData.password)
                 .then((res: any) => {
                     console.log(res)
-                    setIsLoading(false)
                     router.push('/dashboard')
                 })
         } catch (err) {

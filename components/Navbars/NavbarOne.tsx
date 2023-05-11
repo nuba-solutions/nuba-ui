@@ -10,8 +10,10 @@ import { useTheme } from '@/contexts/ThemeContext'
 import NavButton from '../Buttons/NavButton'
 import ProfileListItem from '../ListItems/ProfileListItem'
 import { TbArrowBarToLeft, TbArrowBarToRight } from 'react-icons/tb'
+import { usePageHeader } from '@/contexts/PageHeaderContext'
 
 const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : any) => {
+    const { pageHeader } = usePageHeader();
     const { theme, setTheme } = useTheme();
     const { user, logout } = useAuth()
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
@@ -29,8 +31,24 @@ const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : a
                         <HiOutlineMenuAlt1 className='text-2xl'/>
                     </button>
                     <Link href="/dashboard" className='focus:outline-none'>
-                        <Image src="/logos/nuba-ui-logo-mixed.svg" alt="Nuba Logo" width={90} height={50} className='mx-4 hidden dark:block'/>
-                        <Image src="/logos/nuba-ui-logo.svg" alt="Nuba Logo" width={90} height={50} className='mx-4 dark:hidden'/>
+                        <Image
+                            src="/logos/nuba-ui-logo-mixed.svg"
+                            alt="Nuba Logo"
+                            width={90}
+                            height={50}
+                            className='mx-4 hidden dark:block'
+                            placeholder="blur"
+                            blurDataURL={'/logos/nuba-ui-logo-mixed.svg'}
+                        />
+                        <Image
+                            src="/logos/nuba-ui-logo.svg"
+                            alt="Nuba Logo"
+                            width={90}
+                            height={50}
+                            className='mx-4 dark:hidden'
+                            placeholder="blur"
+                            blurDataURL={'/logos/nuba-ui-logo-mixed.svg'}
+                        />
                     </Link>
                 </div>
                 {isSidebarCompact ? (
@@ -48,8 +66,8 @@ const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : a
             </div>
             <div className="flex items-center lg:flex-1 justify-between">
                 <div className='hidden lg:flex flex-col'>
-                    <p className='text-sm'>Dashboard</p>
-                    <p className='text-xs opacity-60'>This is a page subtitle</p>
+                    <p className='text-base'>{pageHeader?.title}</p>
+                    <p className='text-sm opacity-60'>{pageHeader?.sub}</p>
                 </div>
                 <div className='flex'>
                     <div className='hidden md:flex items-center mr-4 gap-x-2'>
@@ -83,23 +101,18 @@ const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : a
                                     </div>
                                     <ul className="py-2" role="none">
                                         <ProfileListItem link='/users' onClick={() => setIsUserDropdownOpen(false)}>
-                                            <IoPerson className='mr-3 text-slate-300 dark:text-slate-400'/>
                                             Account
                                         </ProfileListItem>
                                         <ProfileListItem onClick={() => setIsUserDropdownOpen(false)}>
-                                            <IoMail className='mr-3 text-slate-300 dark:text-slate-400'/>
                                             Messages
                                         </ProfileListItem>
                                         <ProfileListItem notification onClick={() => setIsUserDropdownOpen(false)}>
-                                            <IoNotifications className='mr-3 text-slate-300 dark:text-slate-400'/>
                                             Notifications
                                         </ProfileListItem>
                                         <ProfileListItem onClick={() => setIsUserDropdownOpen(false)}>
-                                            <IoSettings className='mr-3 text-slate-300 dark:text-slate-400'/>
                                             Settings
                                         </ProfileListItem>
                                         <ProfileListItem onClick={handleLogout}>
-                                            <IoLogOut className='mr-3 text-slate-300 dark:text-slate-400'/>
                                             Sign out
                                         </ProfileListItem>
                                     </ul>
