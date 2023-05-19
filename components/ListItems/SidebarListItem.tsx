@@ -7,6 +7,7 @@ import { IoChevronDown, IoChevronUp } from "react-icons/io5"
 interface SidebarListItemProps {
     children?: React.ReactNode
     onClick?: () => void | React.Dispatch<SetStateAction<boolean>>
+    setIsSidebarOpen?: React.Dispatch<SetStateAction<boolean>>
     link?: string
     notification?: boolean
     name: string
@@ -20,10 +21,12 @@ interface SidebarListItemProps {
     pageHeader?: {title: string, sub: string}
 }
 
-const SidebarListItem: React.FC<SidebarListItemProps> = ({children, name, onClick, link, iconLeft, iconRight, rightText, count, compact, dropdown, classes, pageHeader}) => {
+const SidebarListItem: React.FC<SidebarListItemProps> = ({children, name, onClick, link, iconLeft, iconRight, rightText, count, compact, dropdown, classes, pageHeader, setIsSidebarOpen}) => {
     const path = usePathname();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const { setPageHeader } = usePageHeader()
+
+    const screenSize = window.innerWidth;
 
     return (
         <li className={`${!compact ? 'relative' : 'static'}`}>
@@ -31,10 +34,12 @@ const SidebarListItem: React.FC<SidebarListItemProps> = ({children, name, onClic
                 <>
                     <Link
                         onClick={() => {
+                            onClick;
+                            setIsSidebarOpen ? setIsSidebarOpen(prev => !prev) : '';
                             pageHeader ? setPageHeader({title: pageHeader.title, sub: pageHeader.sub}) : ''
                         }}
                         href={link}
-                        className={`select-none cursor-pointer flex items-center ${compact? 'justify-center' : 'justify-between'} h-[45px] px-2 rounded-lg text-slate-400 ${isDropdownOpen ? 'rounded-b-none bg-gray-100 dark:bg-gray-700' : 'bg-none'} hover:bg-gray-100 dark:hover:bg-gray-700 ${path == `/${link}` ? "active" : "dark:text-slate-500"} ${classes ?  classes : ''}`}
+                        className={`select-none cursor-pointer flex items-center ${compact? 'justify-center' : 'justify-between'} h-[45px] px-2 rounded-lg text-slate-400 ${isDropdownOpen ? 'rounded-b-none bg-gray-100 dark:bg-gray-700' : 'bg-none'} hover:bg-gray-100 dark:hover:bg-slate-700 ${path == `/${link}` ? "active" : "dark:text-slate-500"} ${classes ?  classes : ''}`}
                     >
                         <div className="flex items-center">
                             {
@@ -75,10 +80,10 @@ const SidebarListItem: React.FC<SidebarListItemProps> = ({children, name, onClic
                     <>
                         <span
                             onClick={!dropdown? onClick : () => setIsDropdownOpen(prev => !prev)}
-                            onMouseEnter={() => !compact && setIsDropdownOpen(true)}
-                            onMouseLeave={() => !compact && setIsDropdownOpen(false)}
+                            onMouseEnter={() => (!compact && screenSize >= 1024) && setIsDropdownOpen(true)}
+                            onMouseLeave={() => (!compact && screenSize >= 1024) && setIsDropdownOpen(false)}
                             title={name}
-                            className={`select-none cursor-pointer flex ${compact? 'justify-center' : 'justify-between'} items-center h-[45px] px-2 rounded-lg text-slate-400 dark:text-slate-500 ${isDropdownOpen && dropdown ? 'rounded-b-none bg-gray-100 dark:bg-gray-700': 'bg-none'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
+                            className={`select-none cursor-pointer flex ${compact? 'justify-center' : 'justify-between'} items-center h-[45px] px-2 rounded-lg text-slate-400 dark:text-slate-500 ${isDropdownOpen && dropdown ? 'rounded-b-none bg-gray-100 dark:bg-slate-700': 'bg-none'} hover:bg-gray-100 dark:hover:bg-slate-700`}>
                             <div className="flex items-center">
                                 {
                                     iconLeft ? (
