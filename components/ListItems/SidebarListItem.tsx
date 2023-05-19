@@ -16,23 +16,21 @@ interface SidebarListItemProps {
     count?: number
     compact?: boolean
     dropdown?: boolean
-    isChildActive?: boolean
     classes?: string
     pageHeader?: {title: string, sub: string}
 }
 
-const SidebarListItem: React.FC<SidebarListItemProps> = ({children, name, onClick, link, iconLeft, iconRight, rightText, count, compact, dropdown, isChildActive, classes, pageHeader}) => {
+const SidebarListItem: React.FC<SidebarListItemProps> = ({children, name, onClick, link, iconLeft, iconRight, rightText, count, compact, dropdown, classes, pageHeader}) => {
     const path = usePathname();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const { setPageHeader } = usePageHeader()
 
     return (
-        <li>
+        <li className={`${!compact ? 'relative' : 'static'}`}>
             {link ? (
                 <>
                     <Link
                         onClick={() => {
-                            onClick;
                             pageHeader ? setPageHeader({title: pageHeader.title, sub: pageHeader.sub}) : ''
                         }}
                         href={link}
@@ -77,8 +75,8 @@ const SidebarListItem: React.FC<SidebarListItemProps> = ({children, name, onClic
                     <>
                         <span
                             onClick={!dropdown? onClick : () => setIsDropdownOpen(prev => !prev)}
-                            onMouseEnter={() => setIsDropdownOpen(true)}
-                            onMouseLeave={() => setIsDropdownOpen(false)}
+                            onMouseEnter={() => !compact && setIsDropdownOpen(true)}
+                            onMouseLeave={() => !compact && setIsDropdownOpen(false)}
                             title={name}
                             className={`select-none cursor-pointer flex ${compact? 'justify-center' : 'justify-between'} items-center h-[45px] px-2 rounded-lg text-slate-400 dark:text-slate-500 ${isDropdownOpen && dropdown ? 'rounded-b-none bg-gray-100 dark:bg-gray-700': 'bg-none'} hover:bg-gray-100 dark:hover:bg-gray-700`}>
                             <div className="flex items-center">
@@ -124,9 +122,9 @@ const SidebarListItem: React.FC<SidebarListItemProps> = ({children, name, onClic
                         </span>
                         {dropdown ? (
                             <div
-                                className={`${isDropdownOpen ? 'opacity-1' : 'hidden opacity-0'}`}
-                                onMouseEnter={() => setIsDropdownOpen(true)}
-                                onMouseLeave={() => setIsDropdownOpen(false)}
+                                className={`${isDropdownOpen ? 'opacity-1 absolute w-full z-50 delay-100' : compact ? 'hidden' : 'w-0 h-0 opacity-0'} transition-opacity`}
+                                onMouseEnter={() => !compact && setIsDropdownOpen(true)}
+                                onMouseLeave={() => !compact && setIsDropdownOpen(false)}
                             >
                                 {children}
                             </div>

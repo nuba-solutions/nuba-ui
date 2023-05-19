@@ -23,7 +23,7 @@ const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : a
     }
 
     return (
-        <nav className="sticky top-0 z-50 w-full h-[70px] flex items-center justify-between pl-2 pr-4 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <nav className="sticky top-0 z-50 w-full h-[70px] flex items-center justify-between pl-2 pr-4 bg-white border-b border-gray-200 dark:bg-slate-800 dark:border-gray-700">
             <div className="flex items-center justify-between w-[250px]">
                 <div className='flex items-center'>
                     <button onClick={() => setIsSidebarOpen((prev: boolean) => !prev)} type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
