@@ -45,3 +45,15 @@ body {
 .active {
 	@apply bg-gray-100 dark:bg-slate-700 text-primary-500 dark:text-primary-500;
 }
+
+.tooltip {
+	@apply bg-white text-slate-900 dark:text-white dark:bg-slate-700 ring-1 ring-slate-400/50 py-1 px-2 rounded drop-shadow-lg;
+}
+
+.toaster {
+	@apply bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-50;
+}
+
+.toaster > svg {
+	@apply text-xl text-primary-500;
+}

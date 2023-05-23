@@ -75,13 +75,13 @@ const NavbarOne = ({setIsSidebarOpen, setIsSidebarCompact, isSidebarCompact} : a
                 </div>
                 <div className='flex'>
                     <div className='hidden md:flex items-center mr-4 gap-x-2'>
-                        <NavButton link='/users'>
+                        <NavButton link='/users' tip='Email & Messages'>
                             <IoMail/>
                         </NavButton>
-                        <NavButton notification>
+                        <NavButton notification tip='Notifications'>
                             <IoNotifications/>
                         </NavButton>
-                        <NavButton>
+                        <NavButton tip='Settings'>
                             <IoSettings/>
                         </NavButton>
                     </div>
