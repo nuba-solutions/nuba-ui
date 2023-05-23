@@ -43,7 +43,7 @@ const SidebarOne = ({isSidebarOpen, isSidebarCompact, setIsSidebarOpen} : any) =
                 <ul className="space-y-2 font-medium">
                     <SidebarListItem name='Schedule' iconLeft={<IoAlarm/>} compact={isSidebarCompact} tip='Schedule Details'/>
                     <SidebarListItem name='Calendar' iconLeft={<IoCalendar/>} compact={isSidebarCompact} tip='Calendar'/>
-                    <SidebarListItem name='Toasts' link='toasts' iconLeft={<IoWine/>} compact={isSidebarCompact} tip='Toast Notifications' pageHeader={{title: "Toasts", sub: "Toast Notifications Examples"}}/>
+                    <SidebarListItem name='Toasts' link='toasts' iconLeft={<IoWine/>} compact={isSidebarCompact} tip='Toast Notifications' setIsSidebarOpen={setIsSidebarOpen} pageHeader={{title: "Toasts", sub: "Toast Notifications Examples"}}/>
                 </ul>
             </div>
         </aside>
