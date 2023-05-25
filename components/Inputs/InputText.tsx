@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, ReactEventHandler } from 'react'
+import React, { InputHTMLAttributes, ReactEventHandler, forwardRef } from 'react'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string,
@@ -15,7 +15,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     disabled?: boolean,
 }
 
-const InputText: React.FC<InputProps> = ({name, placeholder, classes, sz, iconLeft, iconRight, hasError, errorMessage, type, onChange, onBlur, disabled}) => {
+const InputText: React.FC<InputProps> = forwardRef(({name, placeholder, classes, sz, iconLeft, iconRight, hasError, errorMessage, type, onChange, onBlur, disabled}, ref) => {
     switch (sz) {
         case 'sm':
             sz = 'h-8 text-sm'
@@ -49,6 +49,7 @@ const InputText: React.FC<InputProps> = ({name, placeholder, classes, sz, iconLe
                         </span> : ''
                     }
                     <input
+                        // ref={ref}
                         disabled={disabled}
                         onChange={onChange}
                         onBlur={onBlur}
@@ -66,6 +67,7 @@ const InputText: React.FC<InputProps> = ({name, placeholder, classes, sz, iconLe
     return (
         <>
             <input
+                // ref={ref}
                 disabled={disabled}
                 onChange={onChange}
                 onBlur={onBlur}
@@ -77,6 +79,6 @@ const InputText: React.FC<InputProps> = ({name, placeholder, classes, sz, iconLe
             {hasError && <span className='text-xs py-1 text-destructive-400'>{errorMessage}</span>}
         </>
     )
-}
+})
 
 export default InputText

@@ -47,7 +47,13 @@ body {
 }
 
 .tooltip {
-	@apply bg-white text-slate-900 dark:text-white dark:bg-slate-700 ring-1 ring-slate-400/50 py-1 px-2 rounded drop-shadow-lg;
+	@apply hidden bg-white text-slate-900 dark:text-white dark:bg-slate-700 ring-1 ring-slate-400/50 py-1 px-2 rounded drop-shadow-lg;
+}
+
+@media screen and (min-width: 1024px) {
+	.tooltip {
+		@apply block;
+	}
 }
 
 .toaster {
