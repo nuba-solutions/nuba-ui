@@ -15,7 +15,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     disabled?: boolean,
 }
 
-const InputText: React.FC<InputProps> = forwardRef(({name, placeholder, classes, sz, iconLeft, iconRight, hasError, errorMessage, type, onChange, onBlur, disabled}, ref) => {
+const InputText: React.FC<InputProps> = ({name, placeholder, classes, sz, iconLeft, iconRight, hasError, errorMessage, type, onChange, onBlur, disabled}) => {
     switch (sz) {
         case 'sm':
             sz = 'h-8 text-sm'
@@ -49,7 +49,6 @@ const InputText: React.FC<InputProps> = forwardRef(({name, placeholder, classes,
                         </span> : ''
                     }
                     <input
-                        // ref={ref}
                         disabled={disabled}
                         onChange={onChange}
                         onBlur={onBlur}
@@ -67,7 +66,6 @@ const InputText: React.FC<InputProps> = forwardRef(({name, placeholder, classes,
     return (
         <>
             <input
-                // ref={ref}
                 disabled={disabled}
                 onChange={onChange}
                 onBlur={onBlur}
@@ -79,6 +77,6 @@ const InputText: React.FC<InputProps> = forwardRef(({name, placeholder, classes,
             {hasError && <span className='text-xs py-1 text-destructive-400'>{errorMessage}</span>}
         </>
     )
-})
+}
 
 export default InputText

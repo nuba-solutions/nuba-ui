@@ -1,4 +1,4 @@
-import { IoAccessibility, IoAlarm, IoApps, IoCalendar, IoConstruct, IoMail, IoNotifications, IoPerson, IoStatsChart, IoWine } from 'react-icons/io5'
+import { IoAccessibility, IoAlarm, IoApps, IoCalendar, IoCamera, IoConstruct, IoMail, IoNotifications, IoPerson, IoStatsChart, IoWine } from 'react-icons/io5'
 import SidebarListItem from '../ListItems/SidebarListItem'
 import DropdownListItem from '../ListItems/DropdownListItem'
 import { HiLightningBolt, HiUsers } from 'react-icons/hi'
@@ -44,6 +44,7 @@ const SidebarOne = ({isSidebarOpen, isSidebarCompact, setIsSidebarOpen} : any) =
                     <SidebarListItem name='Schedule' iconLeft={<IoAlarm/>} compact={isSidebarCompact} tip='Schedule Details'/>
                     <SidebarListItem name='Calendar' iconLeft={<IoCalendar/>} compact={isSidebarCompact} tip='Calendar'/>
                     <SidebarListItem name='Toasts' link='toasts' iconLeft={<IoWine/>} compact={isSidebarCompact} tip='Toast Notifications' setIsSidebarOpen={setIsSidebarOpen} pageHeader={{title: "Toasts", sub: "Toast Notifications Examples"}}/>
+                    <SidebarListItem name='Photo' link='photo' iconLeft={<IoCamera/>} compact={isSidebarCompact} tip='Photo' setIsSidebarOpen={setIsSidebarOpen} pageHeader={{title: "Photo", sub: "Simple Photo Capture Example"}}/>
                 </ul>
             </div>
         </aside>

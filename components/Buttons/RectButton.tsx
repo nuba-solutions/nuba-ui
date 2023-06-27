@@ -2,8 +2,8 @@ import React, { ButtonHTMLAttributes } from 'react';
 import Link from 'next/link'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    visual?: string;
-    variant?: string;
+    visual?: 'fill' | 'outline' | null
+    variant?: 'primary' | 'secondary' | 'destructive' | 'warning' | 'success' | 'info' | 'light' | null
     children?: React.ReactNode;
     link?: string;
     onCLick?: (e: any) => void;
