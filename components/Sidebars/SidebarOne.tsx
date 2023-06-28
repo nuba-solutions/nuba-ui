@@ -46,6 +46,8 @@ const SidebarOne = ({isSidebarOpen, isSidebarCompact, setIsSidebarOpen} : any) =
                     <SidebarListItem name='Toasts' link='toasts' iconLeft={<IoWine/>} compact={isSidebarCompact} tip='Toast Notifications' setIsSidebarOpen={setIsSidebarOpen} pageHeader={{title: "Toasts", sub: "Toast Notifications Examples"}}/>
                     <SidebarListItem name='Photo' link='photo' iconLeft={<IoCamera/>} compact={isSidebarCompact} tip='Photo' setIsSidebarOpen={setIsSidebarOpen} pageHeader={{title: "Photo", sub: "Simple Photo Capture Example"}}/>
                 </ul>
+
+                <div className='h-[120px] lg:hidden'></div>
             </div>
         </aside>
     )
