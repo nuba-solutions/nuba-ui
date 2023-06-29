@@ -1,4 +1,4 @@
-import { IoAccessibility, IoAlarm, IoApps, IoCalendar, IoCamera, IoConstruct, IoMail, IoNotifications, IoPerson, IoStatsChart, IoWine } from 'react-icons/io5'
+import { IoAccessibility, IoAlarm, IoApps, IoBuild, IoCalendar, IoCamera, IoConstruct, IoMail, IoNotifications, IoPerson, IoStatsChart, IoWine } from 'react-icons/io5'
 import SidebarListItem from '../ListItems/SidebarListItem'
 import DropdownListItem from '../ListItems/DropdownListItem'
 import { HiLightningBolt, HiUsers } from 'react-icons/hi'
@@ -44,7 +44,17 @@ const SidebarOne = ({isSidebarOpen, isSidebarCompact, setIsSidebarOpen} : any) =
                     <SidebarListItem name='Schedule' iconLeft={<IoAlarm/>} compact={isSidebarCompact} tip='Schedule Details'/>
                     <SidebarListItem name='Calendar' iconLeft={<IoCalendar/>} compact={isSidebarCompact} tip='Calendar'/>
                     <SidebarListItem name='Toasts' link='toasts' iconLeft={<IoWine/>} compact={isSidebarCompact} tip='Toast Notifications' setIsSidebarOpen={setIsSidebarOpen} pageHeader={{title: "Toasts", sub: "Toast Notifications Examples"}}/>
-                    <SidebarListItem name='Photo' link='photo' iconLeft={<IoCamera/>} compact={isSidebarCompact} tip='Photo' setIsSidebarOpen={setIsSidebarOpen} pageHeader={{title: "Photo", sub: "Simple Photo Capture Example"}}/>
+                </ul>
+
+                <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-slate-700"></hr>
+                <ul className="space-y-2 font-medium">
+                    <SidebarListItem name='Maintenance' iconLeft={<IoBuild/>} compact={isSidebarCompact} dropdown>
+                        <hr className={`${isSidebarCompact ? 'hidden' : 'visible'} h-px bg-white border-0 dark:bg-slate-600`}></hr>
+                        <ul className={`bg-gray-100 dark:bg-slate-700 rounded-lg shadow-lg ${isSidebarCompact ? 'rounded-tl-none absolute z-10 min-w-[200px] shadow-xl' : 'rounded-t-none'} overflow-clip`}>
+                            <DropdownListItem name='Create New' link='maintenance-create' pageHeader={{title: "Maintenance", sub: "Create New Maintenance Request"}}/>
+                            <DropdownListItem name='Ongoing Requests' link='maintenance-list' pageHeader={{title: "Maintenance", sub: "Maintenance Request List"}}/>
+                        </ul>
+                    </SidebarListItem>
                 </ul>
 
                 <div className='h-[120px] lg:hidden'></div>
