@@ -4,16 +4,22 @@ import RectButton from '@/components/Buttons/RectButton'
 import React, { useState, useRef } from 'react'
 import { IoCamera, IoCloseCircle, IoPaperPlane } from 'react-icons/io5'
 import { storage } from '@/config/firebase'
-import { ref, uploadBytes } from 'firebase/storage'
+import { ref, uploadBytes, uploadBytesResumable } from 'firebase/storage'
 import { notify, notifyLoading } from '@/lib/utils/notify'
+import { v4 } from 'uuid'
+import LoaderOne from '@/components/Loaders/LoaderOne'
 
 const MaintenanceCreate = () => {
+
+    const [isLoading, setIsLoading] = useState(false)
 
     const [isSubmitButtonVisible, setIsSubmitButtonVisible] = useState(false)
     const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(false)
     const [isRemovePhotoButtonVisible, setIsRemovePhotoButtonVisible] = useState(false)
     const [isTakePhotoButtonDisabled, setIsTakePhotoButtonDisabled] = useState(false)
     const [isTakePhotoButtonVisible, setIsTakePhotoButtonVisible] = useState(true)
+
+    const [isOverlayVisible, setIsOverlayVisible] = useState(false)
 
     const [maintenanceImage, setMaintenanceImage] = useState<any>({})
 
@@ -43,8 +49,10 @@ const MaintenanceCreate = () => {
 
     const handleSubmitPhoto = () => {
         setIsSubmitButtonDisabled(true)
+        setIsOverlayVisible(true)
+        setIsLoading(true)
         const toastId = notifyLoading('Creating New Maintenance Request')
-        const maintenanceImageRef = ref(storage, `maintenance/images/${maintenanceImage.name}`)
+        const maintenanceImageRef = ref(storage, `maintenance/images/${maintenanceImage.name + v4()}`)
 
         uploadBytes(maintenanceImageRef, maintenanceImage).then(() => {
             notify('success', 'Maintenance Created Successfully', null, null, toastId)
@@ -62,6 +70,8 @@ const MaintenanceCreate = () => {
         setIsRemovePhotoButtonVisible(false)
         setMaintenanceImage({})
         imageRef.current.src = ''
+        setIsOverlayVisible(false)
+        setIsLoading(false)
     }
 
     return (
@@ -73,6 +83,9 @@ const MaintenanceCreate = () => {
                         <IoCloseCircle className='text-4xl drop-shadow-lg text-slate-500'/>
                     </span>)}
                 <img src="" alt="" ref={imageRef} className='flex mx-auto object-cover'/>
+                <div className={`${isOverlayVisible ? 'h-full w-full absolute z-50 top-0 left-0 bg-black opacity-60' : 'none'}`}>
+                    {isLoading ? <LoaderOne/> : null}
+                </div>
             </div>
             {
                 isTakePhotoButtonVisible && (
