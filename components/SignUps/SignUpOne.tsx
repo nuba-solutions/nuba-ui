@@ -192,7 +192,7 @@ const SignUpOne: React.FC<SignUpOneProps> = ({left}) => {
                 <h2 className='text-slate-500 dark:text-slate-300 mt-2 mb-6'>Create an account using your <strong>@nubasolutions</strong> email</h2>
 
                 <form>
-                <InputGroup full classes='my-5'>
+                    <InputGroup full classes='my-5'>
                         <Label text='Full Name' name='name'/>
                         <InputText
                             onChange={handleNameChange}

@@ -2,8 +2,10 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
-import { auth } from "@/config/firebase";
+import { collection, addDoc } from 'firebase/firestore'
+import { auth, db } from "@/config/firebase";
 import LoaderOne from "@/components/Loaders/LoaderOne";
+import { notify } from "@/lib/utils/notify";
 
 const AuthContext = createContext<any>({})
 
@@ -33,7 +35,17 @@ export const AuthContextProvider = ({children} : {children: React.ReactNode}) =>
     }, [])
 
     const signUp = async (email: string, password: string, name: string) => {
-        return createUserWithEmailAndPassword(auth, email, password).then(res => updateProfile(res.user, { displayName: name }))
+        return createUserWithEmailAndPassword(auth, email, password).then(res => {
+            updateProfile(res.user, { displayName: name })
+            addDoc(collection(db, "users"), {
+                uid: res.user.uid,
+                name: name,
+                email: res.user.email,
+            });
+        }).catch((err) => {
+            notify("Error", "Something went wrong")
+            console.log(err)
+        })
     }
 
     const login = async (email: string, password: string) => {

@@ -51,8 +51,8 @@ const SidebarOne = ({isSidebarOpen, isSidebarCompact, setIsSidebarOpen} : any) =
                     <SidebarListItem name='Maintenance' iconLeft={<IoBuild/>} compact={isSidebarCompact} dropdown>
                         <hr className={`${isSidebarCompact ? 'hidden' : 'visible'} h-px bg-white border-0 dark:bg-slate-600`}></hr>
                         <ul className={`bg-gray-100 dark:bg-slate-700 rounded-lg shadow-lg ${isSidebarCompact ? 'rounded-tl-none absolute z-10 min-w-[200px] shadow-xl' : 'rounded-t-none'} overflow-clip`}>
-                            <DropdownListItem name='Create New' link='maintenance-create' pageHeader={{title: "Maintenance", sub: "Create New Maintenance Request"}}/>
-                            <DropdownListItem name='Ongoing Requests' link='maintenance-list' pageHeader={{title: "Maintenance", sub: "Maintenance Request List"}}/>
+                            <DropdownListItem name='Create New Request' link='maintenance-create' setIsSidebarOpen={setIsSidebarOpen} pageHeader={{title: "Maintenance", sub: "Create New Maintenance Request"}}/>
+                            <DropdownListItem name='Ongoing Requests' link='maintenance-list' setIsSidebarOpen={setIsSidebarOpen} pageHeader={{title: "Maintenance", sub: "Maintenance Request List"}}/>
                         </ul>
                     </SidebarListItem>
                 </ul>
