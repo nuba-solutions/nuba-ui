@@ -3,12 +3,12 @@ import { db } from "@/config/firebase";
 import { NextResponse } from 'next/server';
 
 interface Maintenance {
-	uid: string
 	description: string
-	created: Date
-	imageUrl: string
+    created: Date
+    imageUrl: Promise<string>
     authorName: string
     authorEmail: string
+    authorId: string
 }
 
 export async function GET(request: Request) {
@@ -23,15 +23,16 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request): Promise<Response> {
-	const { description, imageUrl, created, authorName, authorEmail } = await request.json() as Maintenance;
-	const newMaintenance = { description, imageUrl, created, authorName, authorEmail };
+	const { description, imageUrl, created, authorName, authorEmail, authorId } = await request.json() as Maintenance;
+	const newMaintenance = { description, imageUrl, created, authorName, authorEmail, authorId };
 
 	const newMaintenanceRef = await addDoc(collection(db, "maintenance"), {
         description: newMaintenance.description,
         created: newMaintenance.created,
         imageUrl: newMaintenance.imageUrl,
         authorName: newMaintenance.authorName,
-        authorEmail: newMaintenance.authorEmail
+        authorEmail: newMaintenance.authorEmail,
+		authorId: newMaintenance.authorId
 	});
 
 	return NextResponse.json(newMaintenanceRef);

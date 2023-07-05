@@ -57,7 +57,7 @@ const SidebarOne = ({isSidebarOpen, isSidebarCompact, setIsSidebarOpen} : any) =
                     </SidebarListItem>
                 </ul>
 
-                <div className='h-[120px] lg:hidden'></div>
+                <div className='h-[220px] lg:hidden'></div>
             </div>
         </aside>
     )

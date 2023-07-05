@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, ReactEventHandler, forwardRef } from 'react'
+import React, { InputHTMLAttributes, ReactEventHandler, Ref, forwardRef } from 'react'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string,
@@ -12,7 +12,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     type: string,
     onChange?: ReactEventHandler,
     onBlur?: ReactEventHandler,
-    disabled?: boolean,
+    disabled?: boolean
 }
 
 const InputText: React.FC<InputProps> = ({name, placeholder, classes, sz, iconLeft, iconRight, hasError, errorMessage, type, onChange, onBlur, disabled}) => {
