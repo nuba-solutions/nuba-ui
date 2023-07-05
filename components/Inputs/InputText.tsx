@@ -13,9 +13,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     onChange?: ReactEventHandler,
     onBlur?: ReactEventHandler,
     disabled?: boolean
+    value?: any
 }
 
-const InputText: React.FC<InputProps> = ({name, placeholder, classes, sz, iconLeft, iconRight, hasError, errorMessage, type, onChange, onBlur, disabled}) => {
+const InputText: React.FC<InputProps> = ({name, placeholder, classes, sz, iconLeft, iconRight, hasError, errorMessage, type, onChange, onBlur, disabled, value}) => {
     switch (sz) {
         case 'sm':
             sz = 'h-8 text-sm'
@@ -56,6 +57,7 @@ const InputText: React.FC<InputProps> = ({name, placeholder, classes, sz, iconLe
                         id={name}
                         className={`${sz} ${classes} ${hasError ? 'text-destructive-400 border-destructive-400' : 'text-slate-800 dark:text-slate-200 border-slate-500'} ${disabled ? 'opacity-40 cursor-not-allowed' : 'opacity-100'} w-full pl-9 border bg-slate-50 dark:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-500/30 focus-within:border-primary-500`}
                         placeholder={placeholder}
+                        value={value}
                     />
                 </div>
                 {hasError && <span className='text-xs py-1 text-destructive-400'>{errorMessage}</span>}
@@ -73,6 +75,7 @@ const InputText: React.FC<InputProps> = ({name, placeholder, classes, sz, iconLe
                 id={name}
                 className={`${sz} ${classes} ${hasError ? 'text-destructive-400 border-destructive-400' : 'text-slate-800 dark:text-slate-200 border-slate-500'} ${disabled ? 'opacity-40 cursor-not-allowed' : 'opacity-100'} w-full px-3 border bg-white dark:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-500/30 focus-within:border-primary-500`}
                 placeholder={placeholder}
+                value={value}
             />
             {hasError && <span className='text-xs py-1 text-destructive-400'>{errorMessage}</span>}
         </>

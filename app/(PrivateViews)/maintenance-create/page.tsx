@@ -37,8 +37,8 @@ const MaintenanceCreate = () => {
 
     const [isOverlayVisible, setIsOverlayVisible] = useState(false)
 
-    const [maintenanceImage, setMaintenanceImage] = useState<any>({})
-    const [maintenanceDescription, setMaintenanceDescription] = useState<string>('')
+    const [maintenanceImage, setMaintenanceImage] = useState<any>(null)
+    const [maintenanceDescription, setMaintenanceDescription] = useState<any>('')
 
     const imageRef = useRef<any>()
     const imageInputRef = useRef<any>()
@@ -92,8 +92,9 @@ const MaintenanceCreate = () => {
         setIsTakePhotoButtonVisible(true)
         setIsTakePhotoButtonDisabled(false)
         setIsRemovePhotoButtonVisible(false)
-        setMaintenanceImage({})
+        setMaintenanceImage(null)
         imageRef.current.src = ''
+        imageInputRef.current.value = ''
         setIsOverlayVisible(false)
         setIsLoading(false)
         setMaintenanceDescription('')
