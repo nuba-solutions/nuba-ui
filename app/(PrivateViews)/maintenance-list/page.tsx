@@ -38,7 +38,7 @@ const MaintenanceList = () => {
             {
                 Array.isArray(maintenanceListQuery.data) ? maintenanceListQuery.data.map((maintenance: Maintenance, idx: number) => (
                     <li key={idx} className='bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-100 p-2 rounded-xl w-full lg:w-[400px] flex flex-col shadow-xl'>
-                        <img src={maintenance.imageUrl} alt="Maintenance image" className='rounded-lg'/>
+                        <img src={maintenance.imageUrl} alt="Maintenance image" className='rounded-lg w-full object-cover h-[300px]'/>
                         <div className='mt-5 px-2'>
                             <div className='mb-2 w-full'>
                                 <strong className='text-sm'>Tenant Name: </strong>
@@ -49,12 +49,12 @@ const MaintenanceList = () => {
                                 <p>{maintenance.authorEmail}</p>
                             </div>
                             <div className='mb-2 w-full'>
-                                <strong className='text-sm'>Description: </strong>
-                                <p>{maintenance.description}</p>
-                            </div>
-                            <div className='mb-2 w-full'>
                                 <strong className='text-sm'>Created at: </strong>
                                 <p>{maintenance.created.toString()}</p>
+                            </div>
+                            <div className='mb-2 w-full'>
+                                <strong className='text-sm'>Description: </strong>
+                                <p>{maintenance.description}</p>
                             </div>
                         </div>
                     </li>

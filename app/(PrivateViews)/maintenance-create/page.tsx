@@ -144,6 +144,7 @@ const MaintenanceCreate = () => {
                             setMaintenanceDescription(e.target.value);
                             e.target.value ? setIsCreateMaintenanceButtonDisabled(false) : setIsCreateMaintenanceButtonDisabled(true)
                         }}
+                        value={maintenanceDescription}
                     />
                 </InputGroup>
 
@@ -154,7 +155,7 @@ const MaintenanceCreate = () => {
                             <span className='absolute right-3 top-3 cursor-pointer' onClick={() => handleRemovePhoto()}>
                                 <IoCloseCircle className='text-4xl drop-shadow-lg text-slate-500'/>
                             </span>)}
-                        <img src="" alt="" ref={imageRef} className='flex mx-auto object-cover w-full h-[300px]'/>
+                        <img src="" alt="" ref={imageRef} className='flex mx-auto object-cover w-full outline-none ring-0'/>
                         <div className={`${isOverlayVisible ? 'h-full w-full absolute z-50 top-0 left-0 bg-black opacity-60' : 'none'}`}>
                             {isLoading ? <LoaderOne/> : null}
                         </div>
