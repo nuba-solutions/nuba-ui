@@ -1,10 +1,10 @@
 "use client"
 
-import RectButton from '@/components/Buttons/RectButton';
 import { notify, notifyLoading } from '@/lib/utils/notify';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios';
-import { IoTrashBin } from 'react-icons/io5';
+import { format, parseISO } from 'date-fns'
+import { IoTime, IoTrashBin } from 'react-icons/io5';
 
 interface Maintenance {
     uid: string
@@ -72,7 +72,7 @@ const MaintenanceList = () => {
                             </div>
                             <div className='mb-2 w-full'>
                                 <strong className='text-slate-400'>Created at: </strong>
-                                <p>{maintenance.created.toString()}</p>
+                                <p>{format(parseISO(maintenance.created.toLocaleString()), `MMMM dd, yyyy - hh:mm a`)}</p>
                             </div>
                             <div className='mb-2 w-full'>
                                 <strong className='text-slate-400'>Description: </strong>

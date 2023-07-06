@@ -133,7 +133,7 @@ const MaintenanceCreate = () => {
                 <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-slate-700"></hr>
             </div>
 
-            <div className='xl:max-w-3xl'>
+            <div className='xl:max-w-sm'>
                 <InputGroup full classes='mb-5'>
                     <Label text='Maintenance Description' name='description'/>
                     <InputText
