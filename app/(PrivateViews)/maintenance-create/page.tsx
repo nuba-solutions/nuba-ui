@@ -72,7 +72,7 @@ const MaintenanceCreate = () => {
     }
 
     const handleRemovePhoto = () => {
-        resetMaintenanceCreateStates()
+        resetMaintenanceCreateStates(false)
     }
 
     const handleSubmitPhoto: any = async () => {
@@ -86,7 +86,7 @@ const MaintenanceCreate = () => {
         return snapShot;
     }
 
-    const resetMaintenanceCreateStates = () => {
+    const resetMaintenanceCreateStates = (shouldClearDescription? : boolean) => {
         setIsCreateMaintenanceButtonVisible(false)
         setIsCreateMaintenanceButtonDisabled(true)
         setIsTakePhotoButtonVisible(true)
@@ -97,14 +97,14 @@ const MaintenanceCreate = () => {
         imageInputRef.current.value = ''
         setIsOverlayVisible(false)
         setIsLoading(false)
-        setMaintenanceDescription('')
+        shouldClearDescription ? setMaintenanceDescription('') : ''
     }
 
     const handleCreateMaintenanceRequest = async () => {
         const toastId = notifyLoading('Creating New Maintenance Request')
         let isPhotoUploadedSuccess = await handleSubmitPhoto()
 
-        if (!isPhotoUploadedSuccess && isPhotoUploadedSuccess === null) return
+        if (!isPhotoUploadedSuccess || isPhotoUploadedSuccess === null) return
 
         let data : MaintenanceRequest = {
             description: maintenanceDescription,
@@ -118,11 +118,11 @@ const MaintenanceCreate = () => {
         await axios.post('/api/maintenance', data).then((response) => {
             if (response.status === 200) notify('success', 'Maintenance Created Successfully', null, null, toastId)
         }).catch((err) => {
-            console.log(err)
+            console.error(err)
             notify('error', 'Something Went Wrong!', null, null, toastId)
         })
 
-        resetMaintenanceCreateStates()
+        resetMaintenanceCreateStates(true)
     }
 
     return (

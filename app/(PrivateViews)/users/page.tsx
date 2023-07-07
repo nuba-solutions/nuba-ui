@@ -123,7 +123,7 @@ const Users = () => {
                 </ul>
             </div>
 
-            <DrawerOne isAddUserDrawerOpen={isAddUserDrawerOpen} setIsAddUserDrawerOpen={setIsAddUserDrawerOpen}>
+            <DrawerOne openState={isAddUserDrawerOpen} setState={setIsAddUserDrawerOpen} title="Add user">
                 <form onSubmit={handleSubmit(onSubmit)} className='mt-5 w-full flex flex-col gap-3'>
                     <InputGroup full>
                         <Label name='firstName' text='First Name'/>

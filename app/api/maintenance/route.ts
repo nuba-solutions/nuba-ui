@@ -1,4 +1,4 @@
-import { collection, getDocs, deleteDoc, doc, setDoc } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/config/firebase";
 import { NextResponse } from 'next/server';
 
@@ -9,6 +9,7 @@ interface Maintenance {
     authorName: string
     authorEmail: string
     authorId: string
+	uid: string
 }
 
 export async function GET(request: Request) {
@@ -67,6 +68,32 @@ export async function DELETE(request: Request): Promise<Response> {
 		response = {success: true, message: 'Maintenance deleted successfully'}
 	} catch (error) {
 		response = {success: false, message: 'Could not delete maintenance'}
+	}
+
+	return NextResponse.json(response)
+}
+
+export async function PUT(request: Request): Promise<Response> {
+	const { description, imageUrl, created, authorName, authorEmail, authorId, uid } = await request.json() as Maintenance;
+	const updatedMaintenance = { description, imageUrl, created, authorName, authorEmail, authorId, uid };
+	let response = null;
+
+	try {
+		const updatedMaintenanceRef = doc(db, "maintenance", uid)
+		await updateDoc(
+			updatedMaintenanceRef, {
+				uid: updatedMaintenance.uid,
+				description: updatedMaintenance.description,
+				created: updatedMaintenance.created,
+				imageUrl: updatedMaintenance.imageUrl,
+				authorName: updatedMaintenance.authorName,
+				authorEmail: updatedMaintenance.authorEmail,
+				authorId: updatedMaintenance.authorId
+			}
+		)
+		response = updatedMaintenanceRef;
+	} catch (error) {
+		response = {success: false, message: "Could not update maintenance"}
 	}
 
 	return NextResponse.json(response)
