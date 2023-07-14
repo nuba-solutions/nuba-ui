@@ -81,12 +81,12 @@ const LoginOne: React.FC<LoginOneProps> = ({left, center}) => {
             return;
         }
 
-        let regEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(nubasolutions.in|nubasolutions.com)$/;
-        if (!loginData.email.toString().toLowerCase().trim().match(regEx)) {
-            setEmailErrorMessage('It must be @nubasolutions')
-            setEmailHasError(true)
-            return;
-        }
+        // let regEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(nubasolutions.in|nubasolutions.com)$/;
+        // if (!loginData.email.toString().toLowerCase().trim().match(regEx)) {
+        //     setEmailErrorMessage('It must be @nubasolutions')
+        //     setEmailHasError(true)
+        //     return;
+        // }
     }
 
     const validatePassword = () => {
