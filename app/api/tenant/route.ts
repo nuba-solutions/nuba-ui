@@ -4,18 +4,18 @@ import { NextResponse } from 'next/server';
 
 interface Tenant {
 	email: string
-    name: string
-	id: string
+    displayName: string
+	localId: string
 }
 
 export async function POST(request: Request) {
-    const { email, name, id } = await request.json() as Tenant;
+    const { email, displayName, localId } = await request.json() as Tenant;
 	let response = null;
 
     try {
         await addDoc(collection(db, "users"), {
-            uid: id,
-            name: name,
+            uid: localId,
+            name: displayName,
             email: email,
         }).then((res) => {
             response = res
