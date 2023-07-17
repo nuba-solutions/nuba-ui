@@ -11,6 +11,7 @@ interface Tenant {
 export async function POST(request: Request) {
     const { email, displayName, localId } = await request.json() as Tenant;
 	let response = null;
+    let origin = request.headers.get('origin')
 
     try {
         await addDoc(collection(db, "users"), {
@@ -22,6 +23,14 @@ export async function POST(request: Request) {
         })
     } catch (err) {
         response = {success: false, message: "Could not create user", error: err}
+    }
+
+    response = {...response,
+        headers: {
+			"Access-Control-Allow-Origin": origin,
+			"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+			"Access-Control-Allow-Headers": "Content-Type, Authorization",
+		},
     }
 
     return NextResponse.json(response);
