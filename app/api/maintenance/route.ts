@@ -1,4 +1,4 @@
-import { collection, getDocs, deleteDoc, doc, setDoc, updateDoc } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc, setDoc, updateDoc, query, where } from "firebase/firestore";
 import { db } from "@/config/firebase";
 import { NextResponse } from 'next/server';
 
@@ -12,12 +12,16 @@ interface Maintenance {
 	uid: string
 }
 
-export async function GET(request: Request) {
+export async function GET(request: Request): Promise<Response> {
+	const { searchParams } = new URL(request.url);
+	const userId = searchParams.get("userId") || "";
 	let maintenanceList: Maintenance[] = [];
 	let response = null;
 
 	try {
-		const querySnapshot = await getDocs(collection(db, "maintenance"));
+		const q = query(collection(db, "maintenance"), where("authorId", "==", userId));
+
+		const querySnapshot = await getDocs(q);
 		querySnapshot.forEach((doc: any) => {
 			doc.id, " => ", maintenanceList.push(doc.data());
 		});

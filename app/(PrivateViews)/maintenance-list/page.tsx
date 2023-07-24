@@ -10,7 +10,7 @@ import { storage } from '@/config/firebase';
 import { useAuth } from '@/contexts/AuthContext';
 import { notify, notifyLoading } from '@/lib/utils/notify';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { format, parseISO } from 'date-fns'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { useEffect, useRef, useState } from 'react';
@@ -139,7 +139,7 @@ const MaintenanceList = () => {
 
     const maintenanceListQuery = useQuery({
         queryKey: ['maintenance'],
-        queryFn: async () => await axios.get('/api/maintenance').then((res) => res.data)
+        queryFn: async () => await axios.get('/api/maintenance', { params: { userId: user.uid } }).then((res) => res.data)
     })
 
     const deleteMaintenanceMutation = useMutation({
@@ -214,7 +214,7 @@ const MaintenanceList = () => {
                                 Edit maintenance
                             </span>
                             {
-                                authenticatedUser.uid === maintenance.authorId ? (
+                                authenticatedUser?.uid === maintenance?.authorId ? (
                                     <span
                                         className='flex items-center justify-center bg-slate-100 dark:bg-slate-700 text-destructive-400 py-3 px-4 rounded-md font-semibold w-full mt-2 cursor-pointer'
                                         onClick={() => {
