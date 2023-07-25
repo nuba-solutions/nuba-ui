@@ -19,12 +19,19 @@ export async function GET(request: Request): Promise<Response> {
 	let response = null;
 
 	try {
-		const q = query(collection(db, "maintenance"), where("authorId", "==", userId));
+		if (!userId) {
+			const querySnapshot = await getDocs(collection(db, "maintenance"));
+			querySnapshot.forEach((doc: any) => {
+				doc.id, " => ", maintenanceList.push(doc.data());
+			});
+		} else {
+			const q = query(collection(db, "maintenance"), where("authorId", "==", userId));
 
-		const querySnapshot = await getDocs(q);
-		querySnapshot.forEach((doc: any) => {
-			doc.id, " => ", maintenanceList.push(doc.data());
-		});
+			const querySnapshot = await getDocs(q);
+			querySnapshot.forEach((doc: any) => {
+				doc.id, " => ", maintenanceList.push(doc.data());
+			});
+		}
 		response = maintenanceList;
 	} catch (error) {
 		response = {success: false, message: "Could not get maintenance list"}
